@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  backend:
+    build: ./backend/simpleapi
+    hostname: devops-backend
+    networks:
+      - app-network
+    depends_on:
+      - database
+  database:
+    build: ./database
+    hostname: devops-bdd
+    networks:
+      - app-network
+  httpd:
+    build: ./frontend
+    ports:
+      - 8080:80
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
