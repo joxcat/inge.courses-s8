@@ -23,7 +23,6 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        run:
-          - cd devops/TP/part1/backend/simpleapi
-          - mvn clean verify
+        working-directory: devops/TP/part1/backend/simpleapi
+        run: mvn clean verify
 
