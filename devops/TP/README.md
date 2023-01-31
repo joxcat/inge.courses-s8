@@ -91,3 +91,42 @@ networks:
 2. `docker tag part1-database blackksoulls/inge.courses-s8.devops.takima.bdd:1.0`: ajout du nom du repo docker hub et de la version
 3. `docker push blackksoulls/inge.courses-s8.devops.takima.bdd:1.0`: envoi de l'image sur docker hub
 
+## Part 2
+### 2-1 What are testcontainers?
+Ce sont des librairies Java qui permettent de lancer des containers de différents services pour tester.
+
+### 2-2 Document your Github Actions configurations.
+```yaml
+name: CI devops 2023
+on:
+  #to begin you want to launch this job in main and develop
+  push:
+    # branches:
+    #   - main
+    #   - develop
+    branches: master
+  # And on each pull request
+  pull_request:
+
+jobs:
+  test-backend: 
+    # We use the docker image ubuntu 22.04
+    runs-on: ubuntu-22.04
+    steps:
+     #checkout your github code using actions/checkout@v2.5.0
+      - uses: actions/checkout@v3
+
+     #do the same with another action (actions/setup-java@v3) that enable to setup jdk 17 with the temurin distribution
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+     #finally build your app with the latest command
+      - name: Build and test with Maven
+        # Change the current directory to the Java project directory
+        working-directory: devops/TP/part1/backend/simpleapi
+        # Check the project with maven
+        run: mvn clean verify
+```
