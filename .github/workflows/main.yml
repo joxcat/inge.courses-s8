@@ -38,14 +38,14 @@ jobs:
       - uses: actions/checkout@v3 
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-      # - name: Build image and push backend
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     # relative path to the place where source code with Dockerfile is located
-      #     context: devops/TP/part1/backend/simple-api
-      #     # Note: tags has to be all lower-case
-      #     tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.backend
-      #     push: ${{ github.ref == 'refs/heads/master' }}
+      - name: Build image and push backend
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: devops/TP/part1/backend/simple-api
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.bdd:backend
+          push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Build image and push database
         uses: docker/build-push-action@v3
@@ -56,12 +56,12 @@ jobs:
           tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.bdd
           push: ${{ github.ref == 'refs/heads/master' }}
 
-      # - name: Build image and push httpd
-      #   uses: docker/build-push-action@v3
-      #   with:
-      #     # relative path to the place where source code with Dockerfile is located
-      #     context: devops/TP/part1/frontend
-      #     # Note: tags has to be all lower-case
-      #     tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.frontend
-      #     push: ${{ github.ref == 'refs/heads/master' }}
+      - name: Build image and push httpd
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: devops/TP/part1/frontend
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.bdd:frontend
+          push: ${{ github.ref == 'refs/heads/master' }}
 
