@@ -1,0 +1,6 @@
+id_rsa
+
+# Devenv
+.devenv*
+devenv.local.nix
+

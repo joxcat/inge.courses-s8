@@ -1,9 +1,16 @@
 version: '3.7'
 
 services:
-  backend:
+  backend-purple:
     build: ./backend/simpleapi
-    hostname: devops-backend
+    hostname: devops-backend-purple
+    networks:
+      - app-network
+    depends_on:
+      - database
+  backend-yellow:
+    build: ./backend/simpleapi
+    hostname: devops-backend-yellow
     networks:
       - app-network
     depends_on:
@@ -20,7 +27,8 @@ services:
     networks:
       - app-network
     depends_on:
-      - backend
+      - backend-purple
+      - backend-yellow
 
 networks:
   app-network:
