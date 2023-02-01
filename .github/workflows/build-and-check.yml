@@ -24,8 +24,8 @@ jobs:
 
      #finally build your app with the latest command
       - name: Build and test with Maven
-        working-directory: devops/TP/part1/backend/simpleapi
+        working-directory: devops/TP/backend/simpleapi
         run: mvn clean verify
       - name: Check with Sonar
-        working-directory: devops/TP/part1/backend/simpleapi
+        working-directory: devops/TP/backend/simpleapi
         run: mvn -B verify sonar:sonar -Dsonar.projectKey=oui_oui -Dsonar.organization=oui -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}

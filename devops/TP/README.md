@@ -126,7 +126,7 @@ jobs:
      #finally build your app with the latest command
       - name: Build and test with Maven
         # Change the current directory to the Java project directory
-        working-directory: devops/TP/part1/backend/simpleapi
+        working-directory: devops/TP/backend/simpleapi
         # Check the project with maven
         run: mvn clean verify
 ```

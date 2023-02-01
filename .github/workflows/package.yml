@@ -17,7 +17,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: devops/TP/part1/backend/simpleapi
+          context: devops/TP/backend/simpleapi
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.bdd:backend
           push: ${{ github.ref == 'refs/heads/master' }}
@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: devops/TP/part1/database
+          context: devops/TP/database
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.bdd
           push: ${{ github.ref == 'refs/heads/master' }}
@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: devops/TP/part1/frontend
+          context: devops/TP/frontend
           # Note: tags has to be all lower-case
           tags:  ${{secrets.DOCKERHUB_USERNAME}}/inge.courses-s8.devops.takima.bdd:frontend
           push: ${{ github.ref == 'refs/heads/master' }}
