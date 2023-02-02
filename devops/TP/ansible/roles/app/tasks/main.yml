@@ -1,0 +1,18 @@
+---
+# tasks file for roles/app
+- name: Run Backend Yellow
+  docker_container:
+    name: app-yellow
+    hostname: devops-backend-yellow
+    networks:
+      - name: devops-network
+    image: blackksoulls/inge.courses-s8.devops.takima.bdd:backend
+
+- name: Run Backend Purple
+  docker_container:
+    name: app-purple
+    hostname: devops-backend-purple
+    networks:
+      - name: devops-network
+    image: blackksoulls/inge.courses-s8.devops.takima.bdd:backend
+

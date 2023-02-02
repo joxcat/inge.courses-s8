@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: false
+  become: yes
+  roles:
+    - {role: docker}
+    - {role: network}
+    - {role: database}
+    - {role: app}
+    - {role: proxy}
+

@@ -1,0 +1,9 @@
+---
+# tasks file for roles/database
+- name: Run BDD
+  docker_container:
+    name: database
+    hostname: devops-bdd
+    networks:
+      - name: devops-network
+    image: blackksoulls/inge.courses-s8.devops.takima.bdd:1.0

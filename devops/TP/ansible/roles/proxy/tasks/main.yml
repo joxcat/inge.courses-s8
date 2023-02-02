@@ -1,0 +1,10 @@
+---
+# tasks file for roles/proxy
+- name: Run HTTPD
+  docker_container:
+    name: proxy
+    ports:
+      - 80:80
+    networks:
+      - name: devops-network
+    image: blackksoulls/inge.courses-s8.devops.takima.bdd:frontend
