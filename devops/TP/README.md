@@ -130,3 +130,11 @@ jobs:
         # Check the project with maven
         run: mvn clean verify
 ```
+
+## Part 3
+- `ansible all -i inventories/setup.yml -m ping`
+- `ansible all -i inventories/setup.yml -m setup -a "filter=ansible_distribution*"`
+- `ansible all -i inventories/setup.yml -m yum -a "name=httpd state=absent" --become`
+- `ansible-playbook -i inventories/setup.yml playbook.yml`
+- `ansible-plaansible-playbook -i inventories/setup.yml docker.yml`
+- 
