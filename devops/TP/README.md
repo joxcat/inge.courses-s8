@@ -1,4 +1,7 @@
 # DevOps CI / CD
+- Johan Planchon
+- Julien Caposiena
+
 ## Part 1
 ### 1-1 Document your database container essentials: commands and Dockerfile.
 1. Création Dockerfile
