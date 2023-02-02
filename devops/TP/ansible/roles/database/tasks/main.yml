@@ -6,4 +6,4 @@
     hostname: devops-bdd
     networks:
       - name: devops-network
-    image: blackksoulls/inge.courses-s8.devops.takima.bdd:1.0
+    image: blackksoulls/inge.courses-s8.devops.takima.bdd:database
