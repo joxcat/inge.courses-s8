@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PokéSocks13</string>
+    <string name="menu_map">Carte</string>
+    <string name="menu_pokedex">Pokedex</string>
+    <string name="bulbizare">Bulbizare</string>
+    <string name="salameche">Salamèche</string>
+    <string name="carapuce">Carapuce</string>
+    <string name="chose_your_pokemon">Choisissez votre Pokémon</string>
+    <string name="menu_equipe">Équipe</string>
+</resources>

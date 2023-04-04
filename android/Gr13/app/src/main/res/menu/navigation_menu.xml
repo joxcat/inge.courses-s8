@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_map"
+        android:title="@string/menu_map"
+        android:icon="@drawable/ic_menu_compass" />
+
+    <item android:id="@+id/action_pokedex"
+        android:title="@string/menu_pokedex"
+        android:icon="@drawable/ic_menu_offline" />
+
+    <item android:id="@+id/action_team"
+        android:title="@string/menu_equipe"
+        android:icon="@drawable/pokeball" />
+</menu>
