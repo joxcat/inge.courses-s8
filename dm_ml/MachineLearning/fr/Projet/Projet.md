@@ -94,7 +94,7 @@ Votre prochaine tâche consiste à mettre au point et à effectuer différents t
 
 ## Rapport
 
-Votre tâche finale consiste à préparer un rapport de 5 pages sur le projet (en français ou en anglais) en format PDF, qui détaille les points suivants :
+Votre tâche finale consiste à préparer un rapport de 5 pages max sur le projet (en français ou en anglais) en format PDF, qui détaille les points suivants :
 
 - Le but de votre projet
 - Sources des données de vos images et leurs licences.
