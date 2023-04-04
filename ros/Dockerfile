@@ -21,13 +21,21 @@ RUN sed -i "s/#force_color/force_color/" /home/notroot/.bashrc && \
 RUN python3 -m pip install \
   catkin_pkg \
   pyaml \
-  empy
+  empy \
+  bagpy
 
 RUN apt install -y \
+  wget \
   ros-melodic-turtlesim \
   ros-melodic-rqt \
   ros-melodic-rqt-common-plugins \
   ros-melodic-rospy-tutorials
+
+RUN mkdir -p /home/notroot/bin && \
+  cd /home/notroot/bin && \
+  wget https://raw.githubusercontent.com/ElectricRCAircraftGuy/eRCaGuy_dotfiles/master/useful_scripts/ros_readbagfile.py && \
+  chmod +x ros_readbagfile.py && \
+  echo 'export PATH="$PATH:/home/notroot/bin"' >> /home/notroot/.profile
 
 RUN echo 'PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "' >> /home/notroot/.bashrc
 
