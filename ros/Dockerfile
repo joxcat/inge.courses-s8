@@ -19,6 +19,9 @@ RUN sed -i "s/#force_color/force_color/" /home/notroot/.bashrc && \
   echo "source /opt/ros/melodic/setup.bash" >> /home/notroot/.bashrc
 
 RUN python3 -m pip install catkin_pkg
-RUN apt install -y ros-melodic-turtlesim
+RUN apt install -y \
+  ros-melodic-turtlesim \
+  ros-melodic-rqt \
+  ros-melodic-rqt-common-plugins
 
 USER notroot
