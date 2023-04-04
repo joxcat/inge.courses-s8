@@ -18,10 +18,17 @@ RUN groupadd --gid $GID notroot && \
 RUN sed -i "s/#force_color/force_color/" /home/notroot/.bashrc && \
   echo "source /opt/ros/melodic/setup.bash" >> /home/notroot/.bashrc
 
-RUN python3 -m pip install catkin_pkg
+RUN python3 -m pip install \
+  catkin_pkg \
+  pyaml \
+  empy
+
 RUN apt install -y \
   ros-melodic-turtlesim \
   ros-melodic-rqt \
-  ros-melodic-rqt-common-plugins
+  ros-melodic-rqt-common-plugins \
+  ros-melodic-rospy-tutorials
+
+RUN echo 'PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "' >> /home/notroot/.bashrc
 
 USER notroot

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker exec -it -u notroot ros1 /bin/bash
+docker exec -it ros1 /bin/bash
