@@ -1,0 +1,1 @@
+: foreach *.c |> gcc %f -o %o |> %B
