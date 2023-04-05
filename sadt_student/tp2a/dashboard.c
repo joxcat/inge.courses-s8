@@ -288,9 +288,11 @@ int main(int argc, char **argv)
                 break;
             case FRAME_MOTOR_SPEED_ID:
                 car.motor_speed = get_motor_speed(&frame);
+                break;
             case FRAME_VEHICLE_SPEED_ID:
                 car.speed = get_vehicle_speed(&frame);
                 car.gear = get_gear_selection(&frame);
+                break;
         }
 
         if (are_all_frames_checked(must_see_frames, must_see_frames_len)) {
