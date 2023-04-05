@@ -24,7 +24,7 @@ def on_bumper_event(data):
 
 
 if __name__ == '__main__':
-    rospy.init_node('listener', anonymous=True)
+    rospy.init_node('collision_warning', anonymous=True)
     rospy.Subscriber('/mobile_base/events/bumper', BumperEvent, on_bumper_event)
     bipper = rospy.Publisher('/mobile_base/commands/sound', Sound, queue_size=10)
     rospy.spin()

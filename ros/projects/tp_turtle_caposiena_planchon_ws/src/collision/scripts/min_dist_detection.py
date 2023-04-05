@@ -23,7 +23,7 @@ def on_scan(data):
     send_distance(min)
 
 if __name__ == '__main__':
-    rospy.init_node('listener', anonymous=True)
+    rospy.init_node('min_dist_detection', anonymous=True)
     rospy.Subscriber('/scan', LaserScan, on_scan)
     distance_pipe = rospy.Publisher('/min_dist', Float32, queue_size=10)
     rospy.spin()
