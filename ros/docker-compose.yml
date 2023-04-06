@@ -15,6 +15,8 @@ services:
     environment:
       DISPLAY: $DISPLAY.0
       EDITOR: vim  
+      ROS_MASTER_URI: http://192.168.1.104:11311
+      ROS_HOSTNAME: 192.168.1.205
     volumes:
       - ./ros_data:/home/notroot/.ros:rw
       - ./projects:/home/notroot/projects:rw

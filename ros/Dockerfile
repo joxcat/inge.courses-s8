@@ -30,7 +30,11 @@ RUN apt install -y \
   ros-melodic-turtlesim \
   ros-melodic-rqt \
   ros-melodic-rqt-common-plugins \
-  ros-melodic-rospy-tutorials
+  ros-melodic-rospy-tutorials \
+  ros-melodic-arbotix-python \
+  ros-melodic-moveit-core \
+  ros-melodic-moveit-ros-planning-interface
+
 
 RUN mkdir -p /home/notroot/bin && \
   cd /home/notroot/bin && \
@@ -38,7 +42,7 @@ RUN mkdir -p /home/notroot/bin && \
   chmod +x ros_readbagfile.py && \
   echo 'export PATH="$PATH:/home/notroot/bin"' >> /home/notroot/.bashrc
 
-RUN echo 'alias rostup="source ./devel/setup.bash"'
+RUN echo 'alias rostup="source ./devel/setup.bash"' >> /home/notroot/.bashrc
 
 RUN echo 'PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "' >> /home/notroot/.bashrc
 
