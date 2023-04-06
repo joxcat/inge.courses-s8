@@ -33,7 +33,8 @@ RUN apt install -y \
   ros-melodic-rospy-tutorials \
   ros-melodic-arbotix-python \
   ros-melodic-moveit-core \
-  ros-melodic-moveit-ros-planning-interface
+  ros-melodic-moveit-ros-planning-interface \
+  ros-melodic-rviz
 
 
 RUN mkdir -p /home/notroot/bin && \
