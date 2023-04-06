@@ -13,7 +13,7 @@ def beep(sound):
 
 
 def on_bumper_event(data):
-    rospy.loginfo("HELP SOMEONE BUMBED MEE " + rospy.get_caller_id())
+    # rospy.loginfo("HELP SOMEONE BUMBED MEE " + rospy.get_caller_id())
 
     if (data.bumper == 0):
         beep(1)
@@ -25,6 +25,6 @@ def on_bumper_event(data):
 
 if __name__ == '__main__':
     rospy.init_node('collision_warning', anonymous=True)
-    rospy.Subscriber('/mobile_base/events/bumper', BumperEvent, on_bumper_event)
     bipper = rospy.Publisher('/mobile_base/commands/sound', Sound, queue_size=10)
+    rospy.Subscriber('/mobile_base/events/bumper', BumperEvent, on_bumper_event)
     rospy.spin()

@@ -19,12 +19,12 @@ def on_scan(data):
         if (not(isnan(distance)) and (min == 0 or distance < min)):
             min = distance
 
-    rospy.loginfo("WOW GET BACK YOU ARE TOO CLOSE " + str(min) + " " + rospy.get_caller_id())
+    # rospy.loginfo("WOW GET BACK YOU ARE TOO CLOSE " + str(min) + " " + rospy.get_caller_id())
     send_distance(min)
 
 if __name__ == '__main__':
     rospy.init_node('min_dist_detection', anonymous=True)
-    rospy.Subscriber('/scan', LaserScan, on_scan)
     distance_pipe = rospy.Publisher('/min_dist', Float32, queue_size=10)
+    rospy.Subscriber('/scan', LaserScan, on_scan)
     rospy.spin()
 
