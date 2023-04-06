@@ -1,6 +1,3 @@
-[submodule "ros/projects/tp_turtle_caposiena_planchon_ws/src/turtlebot2i"]
-	path = ros/projects/tp_turtle_caposiena_planchon_ws/src/turtlebot2i
-	url = https://github.com/Interbotix/turtlebot2i.git
 [submodule "ros/projects/tp_turtle_caposiena_planchon_ws/src/kobuki_msgs"]
 	path = ros/projects/tp_turtle_caposiena_planchon_ws/src/kobuki_msgs
 	url = https://github.com/yujinrobot/kobuki_msgs.git

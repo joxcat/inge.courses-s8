@@ -1,0 +1,6 @@
+<launch>
+  <node name="collision_warning" pkg="collision" type="collision_warning.py" />
+  <node name="min_dist_detection" pkg="collision" type="min_dist_detection.py" />
+  <node name="sound_min_dist_feedback" pkg="collision" type="sound_min_dist_feedback.py" />
+  <node name="led_min_dist_feedback" pkg="collision" type="led_min_dist_feedback.py" />
+</launch>
