@@ -1,0 +1,8 @@
+prefix=/home/notroot/projects/tp_turtle_caposiena_planchon_ws/install
+
+Name: turtlebot2i_gazebo
+Description: Description of turtlebot2i_gazebo
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

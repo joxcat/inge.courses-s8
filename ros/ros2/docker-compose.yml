@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  ros:
+    container_name: 'ros2'
+    hostname: 'localhost'
+    build:
+      context: .
+      args:
+        UID: 1000
+        GID: 1000
+    entrypoint: sh -c 'echo "ROS is ready" && tail -f /dev/null'
+    working_dir: /home/notroot/projects
+    network_mode: "host"
+    environment:
+      DISPLAY: $DISPLAY.0
+      EDITOR: vim  
+      ROS_MASTER_URI: http://192.168.1.104:11311
+      ROS_HOSTNAME: 192.168.1.205
+    volumes:
+      - ./ros_data:/home/notroot/.ros:rw
+      - ./projects:/home/notroot/projects:rw
+      - $HOME/.Xauthority:/home/notroot/.Xauthority:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw

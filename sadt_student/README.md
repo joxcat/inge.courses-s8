@@ -1,8 +1,13 @@
 # SADT student
 
+- MISRA Guidelines: https:// (ipfs gateway domain name) /ipfs/bafykbzaceaotg5u2efa4vclebk7lpb34yj2db6ijgxa6d27dyfm6ludcpppu4?filename=misra-c-2012-guidelines-for-the-use-of-the-c-in--annas-archive--libgenrs-nf-3073003.pdf
+
 ## Course instructions
 
 Look at the [wiki](https://gitlab.com/m0rph03nix/sadt_student/-/wikis/home)
+
+## Demo
+![Demo TP2B](./demo_tp2b.webm)
 
 ## Files description
 

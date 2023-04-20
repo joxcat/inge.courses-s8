@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "if.h": "c",
+        "poll.h": "c",
+        "unistd.h": "c",
+        "ioctl.h": "c",
+        "socket.h": "c",
+        "__sigset_t.h": "c"
+    }
+}

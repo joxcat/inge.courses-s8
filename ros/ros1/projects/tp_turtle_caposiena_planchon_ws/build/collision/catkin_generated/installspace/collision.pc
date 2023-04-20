@@ -1,0 +1,8 @@
+prefix=/home/notroot/projects/tp_turtle_caposiena_planchon_ws/install
+
+Name: collision
+Description: Description of collision
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
