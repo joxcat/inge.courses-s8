@@ -1,0 +1,4 @@
+ros_data/
+projects/**/build
+projects/**/log
+projects/**/install
