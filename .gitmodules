@@ -1,6 +1,18 @@
-[submodule "ros/projects/tp_turtle_caposiena_planchon_ws/src/kobuki_msgs"]
-	path = ros/projects/tp_turtle_caposiena_planchon_ws/src/kobuki_msgs
+[submodule "ros/ros1/projects/tp_turtle_caposiena_planchon_ws/src/kobuki_msgs"]
+	path = ros/ros1/projects/tp_turtle_caposiena_planchon_ws/src/kobuki_msgs
 	url = https://github.com/yujinrobot/kobuki_msgs.git
-[submodule "ros/projects/tp_turtle_caposiena_planchon_ws/src/turtlebot2i"]
-	path = ros/projects/tp_turtle_caposiena_planchon_ws/src/turtlebot2i
+[submodule "ros/ros1/projects/tp_turtle_caposiena_planchon_ws/src/turtlebot2i"]
+	path = ros/ros1/projects/tp_turtle_caposiena_planchon_ws/src/turtlebot2i
 	url = https://github.com/Interbotix/turtlebot2i.git
+[submodule "ros/ros2/projects/ros2_ws/src/examples"]
+	path = ros/ros2/projects/ros2_ws/src/examples
+	url = https://github.com/ros2/examples.git
+	branch = humble
+[submodule "ros/ros2/projects/ros2_ws/src/examples_interfaces"]
+	path = ros/ros2/projects/ros2_ws/src/examples_interfaces
+	url = https://github.com/ros2/example_interfaces.git
+	branch = humble
+[submodule "ros/ros2/projects/ros2_tutorial_ws/src/ros_tutorials"]
+	path = ros/ros2/projects/ros2_tutorial_ws/src/ros_tutorials
+	url = https://github.com/ros/ros_tutorials.git
+	branch = humble-devel
