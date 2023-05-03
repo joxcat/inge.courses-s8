@@ -3,8 +3,6 @@ FROM ros:humble
 ARG UID 1000
 ARG GID 1000
 
-SHELL /bin/bash
-
 RUN groupadd --gid $GID notroot && \
   useradd --uid $UID --gid $GID --shell /bin/bash --create-home notroot && \
   cp /root/.bashrc /home/notroot && \
@@ -25,13 +23,19 @@ RUN apt update -y && \
   python3-pip \
   vim \
   wget \
-  libjpeg-dev
+  libjpeg-dev \
+  bash
+
+SHELL ["/bin/bash", "-c"]
 
 RUN python3 -m pip install \
   catkin_pkg \
   pyaml \
   empy \
-  bagpy
+  bagpy \
+  imutils \
+  av \
+  djitellopy
 
 RUN apt install -y ros-humble-turtlesim
 RUN apt install -y ~nros-humble-rqt*
@@ -39,7 +43,11 @@ RUN apt install -y \
   ros-humble-ros2bag \
   ros-humble-rosbag2-storage-default-plugins
 RUN apt install -y python3-colcon-common-extensions
-RUN apt install -y ros2cli
+RUN apt install -y ros-humble-joy
+# RUN apt install -y ros2cli
+RUN apt install -y \
+  libzbar-dev \
+   ros-humble-zbar-ros
 
 RUN mkdir -p /home/notroot/bin && \
   cd /home/notroot/bin && \

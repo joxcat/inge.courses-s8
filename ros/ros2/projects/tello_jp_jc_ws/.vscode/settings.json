@@ -1,0 +1,18 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/triton_08/tello_jp_jc_ws/install/tello/lib/python3.10/site-packages",
+        "/home/triton_08/tello_jp_jc_ws/install/tello_msg/local/lib/python3.10/dist-packages",
+        "/home/triton_08/tello_jp_jc_ws/install/jpjc_qr/lib/python3.10/site-packages",
+        "/home/triton_08/tello_jp_jc_ws/install/jpjc_joy/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/triton_08/tello_jp_jc_ws/install/tello/lib/python3.10/site-packages",
+        "/home/triton_08/tello_jp_jc_ws/install/tello_msg/local/lib/python3.10/dist-packages",
+        "/home/triton_08/tello_jp_jc_ws/install/jpjc_qr/lib/python3.10/site-packages",
+        "/home/triton_08/tello_jp_jc_ws/install/jpjc_joy/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
