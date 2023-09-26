@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'qr = jpjc_qr.qr:main'
+            'qr = jpjc_qr.qr:main',
+            'qr_vision = jpjc_qr.qr_vision:main',
+            'qr_follower = jpjc_qr.qr_follower:main',
         ],
     },
 )

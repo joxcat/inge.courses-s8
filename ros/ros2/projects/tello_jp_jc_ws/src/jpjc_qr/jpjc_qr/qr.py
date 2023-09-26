@@ -7,7 +7,8 @@ from geometry_msgs.msg import Twist, Vector3
 class QrService(Node):
     def __init__(self):
         super().__init__('qr_service')
-        self.enabled = True
+        self.get_logger().info("QR Service started")
+        self.enabled = False
         self.current_scenar = ""
 
         self.control = self.create_publisher(
@@ -52,11 +53,13 @@ class QrService(Node):
         elif msg.data == "finish" and self.current_scenar == "traveling":
             self.get_logger().info('End traveling')
             self.stop_drone()
-        elif msg.data == "stop":
+        elif msg.data == "stop" and self.current_scenar != "stopping":
+            self.current_scenar = "stopping"
             self.get_logger().info('SHUTDOWN')
             self.stop_drone()
             self.land.publish(Empty())
-        elif msg.data == "drop_area":
+        elif msg.data == "drop_area" and self.current_scenar != "dropping":
+            self.current_scenar = "dropping"
             self.get_logger().info('Landing')
             self.land.publish(Empty())
         elif msg.data == "blue_block":

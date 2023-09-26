@@ -9,6 +9,7 @@ services:
       args:
         UID: 1000
         GID: 1000
+        INPUT_GID: 994
     entrypoint: sh -c 'echo "ROS is ready" && tail -f /dev/null'
     working_dir: /home/notroot/projects
     network_mode: "host"
@@ -21,7 +22,9 @@ services:
       # FASTRTPS_DEFAULT_PROFILES_FILE: /home/notroot/projects/super_client_configuration_file.xml
     ports:
       - 11811:11811
+    privileged: true
     volumes:
+      - /dev/input:/dev/input
       - ./ros_data:/home/notroot/.ros:rw
       - ./projects:/home/notroot/projects:rw
       - $HOME/.Xauthority:/home/notroot/.Xauthority:ro

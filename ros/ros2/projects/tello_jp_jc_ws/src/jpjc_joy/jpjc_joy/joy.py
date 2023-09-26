@@ -10,9 +10,12 @@ from geometry_msgs.msg import Vector3
 
 class Control (Node):
     def __init__(self):
+        self.speed = 3
         self.takeoff_state = False
         self.land_state = True
         self.flip_state = False
+        self.qr_button_state = False
+        self.qr_mode = False
 
         # Node
         super().__init__("joy_control")
@@ -28,15 +31,22 @@ class Control (Node):
         # Subscriber
         self.joystick_subscriber = self.create_subscription(Joy, "/joy", self.joystick_event, 10)
 
+        self.get_logger().info("joy control started")
 
     def joystick_event(self, joy):
+        if joy.axes[5] < -0.30:
+            self.speed = 1
+        elif joy.axes[5] >= -0.30 and joy.axes[5] <= 0.30:
+            self.speed = 2
+        elif joy.axes[5] > 0.30: 
+            self.speed = 5
 
         if  joy.buttons[7] and self.land_state and not self.takeoff_state:
-            self.get_logger().info("takeoff")
-            self.takeoff.publish(Empty())
-            self.takeoff_state = True
-            self.land_state = False
-            return
+                self.get_logger().info("takeoff")
+                self.takeoff.publish(Empty())
+                self.takeoff_state = True
+                self.land_state = False
+                return
 
         if joy.buttons[6] and self.takeoff_state and not self.land_state:
             self.get_logger().info("land")
@@ -49,45 +59,78 @@ class Control (Node):
             self.get_logger().info("emergency")
             self.emergency.publish(Empty())
             return
-        
-        if joy.buttons[0] and not self.flip_state:
-            self.flip_state = True
-            flip = String()
-            flip.data = 'f'
-            self.flip.publish(flip)
 
-        if not joy.buttons[0] and self.flip_state:
-            self.flip_state = False
+        if not self.qr_mode:    
+            # self.get_logger().info("axes %s" % ", ".join(map(lambda a: str(a), joy.axes)))
+            if joy.buttons[0] and not self.flip_state:
+                self.flip_state = True
+                flip = String()
+                flip.data = 'f'
+                self.flip.publish(flip)
+                return
 
-        if sum(joy.axes) >= 1:
-            linear = Vector3()
-            linear.x = -joy.axes[0]*50.0
-            linear.y = joy.axes[1]*50.0
-            linear.z = joy.axes[7]*50.0
+            if not joy.buttons[0] and self.flip_state:
+                self.flip_state = False
+                return
 
-            angular = Vector3()
-            angular.x = 0.0
-            angular.y = 0.0
-            angular.z = -joy.axes[3]*50.0
+            if joy.buttons[1] and not self.qr_button_state:
+                mode = Bool()
+                mode.data = True
+                self.toggle_qr.publish(mode)
+                self.qr_button_state = True
+                return
 
-            msg = Twist()
-            msg.linear = linear
-            msg.angular = angular
+            if not joy.buttons[1] and self.qr_button_state:
+                self.qr_mode = True
+                self.qr_button_state = False
+                return
 
-            self.control.publish(msg)
-            return
-        """
+            # By default without any input the LR and LF are at 1
+            if sum(map(lambda x: abs(x), joy.axes[0:2] + joy.axes[3:5] + joy.axes[6:])) != 0:
+                linear = Vector3()
+                linear.x = -joy.axes[0] * 10.0 * self.speed
+                linear.y = joy.axes[1] * 10.0 * self.speed
+                linear.z = joy.axes[7] * 10.0 * self.speed
+
+                angular = Vector3()
+                angular.x = 0.0
+                angular.y = 0.0
+                angular.z = -joy.axes[3] * 20.0 * self.speed
+
+                msg = Twist()
+                msg.linear = linear
+                msg.angular = angular
+
+                self.control.publish(msg)
+                return
+            else:
+                linear = Vector3()
+                linear.x = 0.0
+                linear.y = 0.0
+                linear.z = 0.0
+
+                angular = Vector3()
+                angular.x = 0.0
+                angular.y = 0.0
+                angular.z = 0.0
+
+                msg = Twist()
+                msg.linear = linear
+                msg.angular = angular
+
+                self.control.publish(msg)
         else:
-            linear = Vector3()
-            angular = Vector3()
+            if joy.buttons[1] and not self.qr_button_state:
+                mode = Bool()
+                mode.data = False
+                self.toggle_qr.publish(mode)
+                self.qr_button_state = True
+                return
 
-            msg = Twist()
-            msg.linear = linear
-            msg.angular = angular
-
-            self.vel.publish(msg)
-            """
-
+            if not joy.buttons[1] and self.qr_button_state:
+                self.qr_mode = False
+                self.qr_button_state = False
+                return
 
 def main():
     rclpy.init()

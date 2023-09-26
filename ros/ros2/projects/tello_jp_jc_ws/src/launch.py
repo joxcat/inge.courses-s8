@@ -9,17 +9,17 @@ def generate_launch_description():
             package='tello',
             executable='tello',
             output='screen',
-            namespace='/',
+            # namespace='/',
             name='tello',
-            parameters=[
-                {'connect_timeout': 10.0},
-                {'tello_ip': '192.168.10.1'},
-                {'tf_base': 'map'},
-                {'tf_drone': 'drone'}
-            ],
-            remappings=[
-                ('/image_raw', '/camera')
-            ],
+            # parameters=[
+            #     {'connect_timeout': 10.0},
+            #     {'tello_ip': '192.168.10.1'},
+            #     {'tf_base': 'map'},
+            #     {'tf_drone': 'drone'}
+            # ],
+            # remappings=[
+            #     ('/image_raw', '/camera')
+            # ],
             respawn=True
         ),
 
@@ -27,42 +27,42 @@ def generate_launch_description():
         Node(
             package='tello_control',
             executable='tello_control',
-            namespace='/',
+            # namespace='/',
             name='control',
             output='screen',
             respawn=False
         ),
 
         # RQT topic debug tool
-        Node(
-            package='rqt_gui',
-            executable='rqt_gui',
-            output='screen',
-            namespace='/',
-            name='rqt',
-            respawn=False
-        ),
+        # Node(
+        #     package='rqt_gui',
+        #     executable='rqt_gui',
+        #     output='screen',
+        #     namespace='/',
+        #     name='rqt',
+        #     respawn=False
+        # ),
 
         # RViz data visualization tool
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            output='screen',
-            namespace='/',
-            name='rviz2',
-            respawn=True,
-            arguments=['-d', '/home/tentone/Git/tello-slam/workspace/src/rviz.rviz']
-        ),
+        # Node(
+        #     package='rviz2',
+        #     executable='rviz2',
+        #     output='screen',
+        #     namespace='/',
+        #     name='rviz2',
+        #     respawn=True,
+        #     arguments=['-d', '/home/tentone/Git/tello-slam/workspace/src/rviz.rviz']
+        # ),
 
         # Static TF publisher
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            namespace='/',
-            name='tf',
-            arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'drone'],
-            respawn=True
-        ),
+        # Node(
+        #     package='tf2_ros',
+        #     executable='static_transform_publisher',
+        #     namespace='/',
+        #     name='tf',
+        #     arguments=['0', '0', '0', '0', '0', '0', '1', 'map', 'drone'],
+        #     respawn=True
+        # ),
 
         # ORB SLAM
         # Node(
@@ -91,6 +91,42 @@ def generate_launch_description():
         #         {'image': '/image_raw'},
         #         {'camera': '/camera_info'}
         #     ]
+        # )
+
+        Node(
+            package='zbar_ros',
+            executable='barcode_reader',
+            name='zbar',
+            remappings=[
+                ('/image', '/image_raw'),
+            ],
+            # namespace='/',
+            output='screen',
+            respawn=False
+        ),
+        Node(
+            package='joy',
+            executable='joy_node',
+            name='joy_node',
+            # namespace='/',
+            output='screen',
+            respawn=False
+        ),
+        # Node(
+        #     package='jpjc_joy',
+        #     executable='joy',
+        #     name='joy',
+        #     namespace='/',
+        #     output='screen',
+        #     respawn=False
+        # ),
+        # Node(
+        #     package='jpjc_qr',
+        #     executable='qr',
+        #     name='qr',
+        #     namespace='/',
+        #     output='screen',
+        #     respawn=False
         # )
     ]
 
